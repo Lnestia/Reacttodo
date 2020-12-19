@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./styles.css";
 import { InputTodo } from "./components/InputTodo";
 import { IncompTodos } from "./components/IncompTodos";
+import { CompTodos } from "./components/CompTodos";
 
 export const App = () => {
   const [todoText, setTodoText] = useState("");
@@ -55,19 +56,7 @@ export const App = () => {
         onClickDelete={onClickDelete}
       />
 
-      <div className="complate-area">
-        <p className="title">完了</p>
-        <ul>
-          {compTodos.map((todo, index) => {
-            return (
-              <div key={todo} className="list-row">
-                <li>{todo}</li>
-                <button onClick={() => onClickBack(index)}>Back</button>
-              </div>
-            );
-          })}
-        </ul>
-      </div>
+      <CompTodos todos={compTodos} onClickBack={onClickBack} />
     </>
   );
 };
